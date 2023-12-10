@@ -110,6 +110,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_avcf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"running_left"]
+}
+
 [sub_resource type="Animation" id="Animation_rbuvq"]
 resource_name = "idle_left"
 length = 0.4
@@ -226,33 +253,6 @@ tracks/1/keys = {
 "values": [&"running_right"]
 }
 
-[sub_resource type="Animation" id="Animation_avcf2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D/AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"running_left"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6nas"]
 _data = {
 "RESET": SubResource("Animation_avcf2"),
@@ -282,12 +282,34 @@ sprite_frames = SubResource("SpriteFrames_mqehy")
 animation = &"running_left"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_v6nas")
 }
 
+[node name="GunPosition_0" type="Marker2D" parent="Player"]
+position = Vector2(0, -20)
+
+[node name="GunPosition_1" type="Marker2D" parent="Player"]
+position = Vector2(20, 0)
+
+[node name="GunPosition_2" type="Marker2D" parent="Player"]
+position = Vector2(0, 20)
+
+[node name="GunPosition_3" type="Marker2D" parent="Player"]
+position = Vector2(-20, 0)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(122, 95)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(5, -1, 289, 172, 436, 82, 455, 1, 550, 146, 403, 374, 138, 279, 103, 151)
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+rotation = -0.00144295
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 2000
+limit_bottom = 2000
+limit_smoothed = true
+position_smoothing_enabled = true

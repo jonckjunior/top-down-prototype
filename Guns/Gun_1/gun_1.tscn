@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhaijus7j3of0"]
+
+[ext_resource type="Script" path="res://Guns/Gun_1/gun_1.gd" id="1_ces16"]
+[ext_resource type="Texture2D" uid="uid://cu7gshw4xa4yl" path="res://Guns/Gun_1/Sprite/2_1.png" id="1_thgyt"]
+[ext_resource type="Texture2D" uid="uid://ccuakmv7rdx0t" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_1.png" id="3_by4j7"]
+[ext_resource type="Texture2D" uid="uid://6rirs8028u7v" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_2.png" id="4_je1ry"]
+[ext_resource type="Texture2D" uid="uid://cetpyi4c0o00p" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_3.png" id="5_af0gb"]
+[ext_resource type="Texture2D" uid="uid://bqw5nxwpm3kpw" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_4.png" id="6_ibwsw"]
+[ext_resource type="Texture2D" uid="uid://blv6emrglt20u" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_5.png" id="7_ybsmd"]
+[ext_resource type="Texture2D" uid="uid://d2212u2lmlybj" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_6.png" id="8_eh1f8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gei8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_by4j7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_je1ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_af0gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ibwsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ybsmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eh1f8")
+}],
+"loop": false,
+"name": &"bullet_effect",
+"speed": 30.0
+}]
+
+[node name="Gun_1" type="Node2D"]
+position = Vector2(365, 99)
+script = ExtResource("1_ces16")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_thgyt")
+
+[node name="BulletMarker" type="Marker2D" parent="Sprite2D"]
+position = Vector2(12, -1)
+
+[node name="BulletEffect" type="Sprite2D" parent="Sprite2D/BulletMarker"]
+position = Vector2(-12, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D/BulletMarker/BulletEffect"]
+position = Vector2(15, -1)
+sprite_frames = SubResource("SpriteFrames_gei8e")
+animation = &"bullet_effect"
+frame = 5
+frame_progress = 1.0

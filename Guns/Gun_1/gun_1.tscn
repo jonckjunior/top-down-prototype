@@ -50,6 +50,7 @@ position = Vector2(12, -1)
 position = Vector2(-12, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D/BulletMarker/BulletEffect"]
+texture_filter = 1
 position = Vector2(15, -1)
 sprite_frames = SubResource("SpriteFrames_gei8e")
 animation = &"bullet_effect"

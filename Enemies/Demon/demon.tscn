@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://rc1oiu7roo8g"]
+
+[ext_resource type="Script" path="res://Enemies/Demon/demon.gd" id="1_dgrpb"]
+[ext_resource type="Texture2D" uid="uid://o3yod7krno15" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f0.png" id="1_kdhp0"]
+[ext_resource type="Texture2D" uid="uid://beqeo0k8ua3ig" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f0.png" id="2_28im5"]
+[ext_resource type="Texture2D" uid="uid://8vy5xpno4m5n" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f1.png" id="2_y5mu4"]
+[ext_resource type="Texture2D" uid="uid://dfycxnkwqsva3" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f2.png" id="3_6qasm"]
+[ext_resource type="Texture2D" uid="uid://dlnuf8c0hgb7c" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f1.png" id="3_mat3l"]
+[ext_resource type="Texture2D" uid="uid://c6dhnokj6hpiu" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f2.png" id="4_elqp3"]
+[ext_resource type="Texture2D" uid="uid://cprduhdxotj0h" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f3.png" id="4_g3vln"]
+[ext_resource type="Texture2D" uid="uid://5073vtcr3dp8" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f3.png" id="5_kuoqi"]
+[ext_resource type="Texture2D" uid="uid://dfj64cg2a5doc" path="res://Enemies/Demon/Sprite/take_damage/big_demon_take_damage.png" id="10_qkif4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neww7"]
+size = Vector2(22, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tawv"]
+size = Vector2(21.5, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ody7w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_28im5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mat3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_elqp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kuoqi")
+}],
+"loop": true,
+"name": &"running_left",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kdhp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y5mu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6qasm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g3vln")
+}],
+"loop": true,
+"name": &"running_right",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_qkif4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qkif4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qkif4")
+}],
+"loop": false,
+"name": &"take_damage",
+"speed": 5.0
+}]
+
+[node name="Demon" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 0
+script = ExtResource("1_dgrpb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_neww7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_7tawv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ody7w")
+animation = &"take_damage"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rkeyorjhx37f"]
 
 [ext_resource type="PackedScene" uid="uid://dc8hynmfakyor" path="res://TileMap/tile_map.tscn" id="1_1rw2v"]
-[ext_resource type="PackedScene" uid="uid://b5myv036ujvbj" path="res://Player/player.tscn" id="2_38irr"]
+[ext_resource type="PackedScene" uid="uid://g0sk65meh0w" path="res://Player/player.tscn" id="2_38irr"]
 [ext_resource type="PackedScene" uid="uid://rc1oiu7roo8g" path="res://Enemies/Demon/demon.tscn" id="3_ypbet"]
 
 [node name="Game Master" type="Node2D"]

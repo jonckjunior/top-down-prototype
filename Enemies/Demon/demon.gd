@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @onready var animationPlayer = get_node("Sprite2D/AnimatedSprite2D")
+@onready var deathObjectRaw = load("res://Enemies/Demon/death_object.tscn")
+@export var life = 20
+
 var baseKnockback = 0.3
 var currentKnockback = 0.0
 var speedKnockback = 0.0
 var knockbackVector = null
-
-var life = 10
 var target = null
 var isLookingRight = true
 const SPEED = 50
@@ -19,7 +20,19 @@ func _ready():
 	target = arrayOfTargets[0]
 
 func take_damage(dmg):
-	animationPlayer.play("take_damage")
+	#TODO(jonck): remover esse codigo bunda
+	var dir = (target.global_position - global_position)
+	var isLookingUp = (dir.y > 0)
+	if isLookingUp:
+		animationPlayer.play("kobold_damage_down_left")
+	else:
+		animationPlayer.play("kobold_damage_top_left")
+
+	if isLookingRight: animationPlayer.flip_h = true
+	else: animationPlayer.flip_h = false
+	
+	
+	
 	life -= dmg
 	if life <= 0:
 		die()
@@ -29,8 +42,7 @@ func _physics_process(delta):
 	handleAnimation()
 
 func handleAnimation():
-	var canChange = animationPlayer.animation == "take_damage" && animationPlayer.frame == 2
-	if !canChange:
+	if "damage" in animationPlayer.animation && animationPlayer.is_playing():
 		return
 	
 	var dir = (target.global_position - global_position)
@@ -40,10 +52,21 @@ func handleAnimation():
 	elif dir.x < 0:
 		isLookingRight = false
 	
-	if isLookingRight:
-		animationPlayer.play("running_right")
+	var isLookingUp = (dir.y > 0)
+	
+	if isLookingUp:
+		animationPlayer.play("kobold_running_down_left")
 	else:
-		animationPlayer.play("running_left")
+		animationPlayer.play("kobold_running_top_left")
+	
+	
+	
+	if isLookingRight:
+		animationPlayer.flip_h = true
+		#animationPlayer.play("running_right")
+	else:
+		animationPlayer.flip_h = false
+		#animationPlayer.play("running_left")
 
 func knockback(knockbackDirection, knockbackSpeed):
 	if knockbackSpeed > speedKnockback:
@@ -52,6 +75,16 @@ func knockback(knockbackDirection, knockbackSpeed):
 		speedKnockback = knockbackSpeed
 
 func die():
+	var deathObject = deathObjectRaw.instantiate()
+	remove_child(deathObject)
+	owner.add_child(deathObject)
+	
+	deathObject.global_position = global_position
+	
+	var dir = target.global_position - global_position
+	var animationName = "kobold_death_down_left" if (dir.y > 0) else "kobold_death_top_left"
+	deathObject.play_animation(animationName, animationPlayer.flip_h, animationPlayer.scale)
+
 	queue_free()
 
 func getNormalizedDirection():

@@ -69,4 +69,4 @@ func knockback():
 	for i in range(enemies.size()):
 		var direction = enemies[i].global_position - global_position
 		if direction.length() < 100:
-			enemies[i].knockback(direction, 200)
+			enemies[i].knockback(direction, 100)

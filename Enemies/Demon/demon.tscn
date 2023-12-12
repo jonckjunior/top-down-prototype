@@ -1,15 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://rc1oiu7roo8g"]
+[gd_scene load_steps=32 format=3 uid="uid://rc1oiu7roo8g"]
 
 [ext_resource type="Script" path="res://Enemies/Demon/demon.gd" id="1_dgrpb"]
 [ext_resource type="Texture2D" uid="uid://o3yod7krno15" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f0.png" id="1_kdhp0"]
 [ext_resource type="Texture2D" uid="uid://beqeo0k8ua3ig" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f0.png" id="2_28im5"]
+[ext_resource type="Texture2D" uid="uid://defycalmpxjti" path="res://Enemies/Demon/Sprite/kobold/kobold_damage_down.png" id="2_o1afm"]
+[ext_resource type="Texture2D" uid="uid://bg7sbdkw7bfqu" path="res://Enemies/Demon/Sprite/kobold/kobold_down_left_1.png" id="2_ud7bi"]
 [ext_resource type="Texture2D" uid="uid://8vy5xpno4m5n" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f1.png" id="2_y5mu4"]
 [ext_resource type="Texture2D" uid="uid://dfycxnkwqsva3" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f2.png" id="3_6qasm"]
+[ext_resource type="Texture2D" uid="uid://ci8psf3v5ulsy" path="res://Enemies/Demon/Sprite/kobold/kobold_down_left_2.png" id="3_18ctg"]
+[ext_resource type="Texture2D" uid="uid://b7ssjf5kyjbmn" path="res://Enemies/Demon/Sprite/kobold/kobold_damage_top.png" id="3_167ct"]
 [ext_resource type="Texture2D" uid="uid://dlnuf8c0hgb7c" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f1.png" id="3_mat3l"]
+[ext_resource type="Texture2D" uid="uid://bsccmcue740x4" path="res://Enemies/Demon/Sprite/kobold/kobold_die_down_1.png" id="4_a2lty"]
 [ext_resource type="Texture2D" uid="uid://c6dhnokj6hpiu" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f2.png" id="4_elqp3"]
+[ext_resource type="Texture2D" uid="uid://2f8bu6qkh1bf" path="res://Enemies/Demon/Sprite/kobold/kobold_down_left_3.png" id="4_fmry8"]
 [ext_resource type="Texture2D" uid="uid://cprduhdxotj0h" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f3.png" id="4_g3vln"]
 [ext_resource type="Texture2D" uid="uid://5073vtcr3dp8" path="res://Enemies/Demon/Sprite/running_left/big_demon_run_anim_f3.png" id="5_kuoqi"]
+[ext_resource type="Texture2D" uid="uid://ce7tcisa1aj5y" path="res://Enemies/Demon/Sprite/kobold/kobold_down_left_4.png" id="5_n7hw7"]
+[ext_resource type="Texture2D" uid="uid://ji4fqo3y66uv" path="res://Enemies/Demon/Sprite/kobold/kobold_die_down_2.png" id="5_ykk7s"]
+[ext_resource type="Texture2D" uid="uid://cfwn1y1m0yfeo" path="res://Enemies/Demon/Sprite/kobold/kobold_die_top_1.png" id="6_3gxe5"]
+[ext_resource type="Texture2D" uid="uid://bypiw6b4me87b" path="res://Enemies/Demon/Sprite/kobold/kobold_down_left_5.png" id="6_y0ff6"]
+[ext_resource type="Texture2D" uid="uid://dmui70qmwfjw7" path="res://Enemies/Demon/Sprite/kobold/kobold_die_top_2.png" id="7_4njtg"]
+[ext_resource type="Texture2D" uid="uid://c1dvw8g5we7rk" path="res://Enemies/Demon/Sprite/kobold/kobold_down_left_6.png" id="7_nnkyu"]
+[ext_resource type="Texture2D" uid="uid://c5s7f5tl51fdc" path="res://Enemies/Demon/Sprite/kobold/kobold_top_left_1.png" id="8_4l4sn"]
+[ext_resource type="Texture2D" uid="uid://cwkkvdyjoup3" path="res://Enemies/Demon/Sprite/kobold/kobold_top_left_2.png" id="9_60jy6"]
+[ext_resource type="Texture2D" uid="uid://blgkf888jh64e" path="res://Enemies/Demon/Sprite/kobold/kobold_top_left_3.png" id="10_6b4h2"]
 [ext_resource type="Texture2D" uid="uid://dfj64cg2a5doc" path="res://Enemies/Demon/Sprite/take_damage/big_demon_take_damage.png" id="10_qkif4"]
+[ext_resource type="Texture2D" uid="uid://c5pjvq8lrmew" path="res://Enemies/Demon/Sprite/kobold/kobold_top_left_4.png" id="11_kp43l"]
+[ext_resource type="Texture2D" uid="uid://wr207hhby53q" path="res://Enemies/Demon/Sprite/kobold/kobold_top_left_5.png" id="12_obsiu"]
+[ext_resource type="Texture2D" uid="uid://yus3w7d5m866" path="res://Enemies/Demon/Sprite/kobold/kobold_top_left_6.png" id="13_tb46s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neww7"]
 size = Vector2(22, 28)
@@ -19,6 +37,90 @@ size = Vector2(21.5, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ody7w"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o1afm")
+}],
+"loop": false,
+"name": &"kobold_damage_down_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_167ct")
+}],
+"loop": false,
+"name": &"kobold_damage_top_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_a2lty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ykk7s")
+}],
+"loop": false,
+"name": &"kobold_die_down_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3gxe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4njtg")
+}],
+"loop": false,
+"name": &"kobold_die_top_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ud7bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_18ctg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fmry8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n7hw7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y0ff6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nnkyu")
+}],
+"loop": true,
+"name": &"kobold_running_down_left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_4l4sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_60jy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6b4h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kp43l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_obsiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tb46s")
+}],
+"loop": true,
+"name": &"kobold_running_top_left",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_28im5")
@@ -69,6 +171,7 @@ animations = [{
 }]
 
 [node name="Demon" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
 collision_mask = 0
 script = ExtResource("1_dgrpb")
 
@@ -86,9 +189,8 @@ shape = SubResource("RectangleShape2D_7tawv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ody7w")
-animation = &"take_damage"
-frame = 2
-frame_progress = 1.0
+animation = &"kobold_die_top_left"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

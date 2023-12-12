@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b5myv036ujvbj"]
+[gd_scene load_steps=30 format=3 uid="uid://g0sk65meh0w"]
 
 [ext_resource type="Script" path="res://Player/Script/PlayerScript.gd" id="1_8c4rb"]
 [ext_resource type="Texture2D" uid="uid://tm5lno1alij5" path="res://Player/Animations/Idle/Idle_Left/Idle1_left1.png" id="2_xunjj"]
@@ -291,3 +291,6 @@ position = Vector2(0, 20)
 
 [node name="GunPosition_3" type="Marker2D" parent="."]
 position = Vector2(-20, 0)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

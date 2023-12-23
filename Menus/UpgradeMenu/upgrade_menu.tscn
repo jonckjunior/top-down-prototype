@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://brlhi7woe15od"]
+
+[ext_resource type="Script" path="res://Menus/UpgradeMenu/upgrade_menu.gd" id="1_3c87u"]
+[ext_resource type="Texture2D" uid="uid://y20g85to8gp0" path="res://Menus/UpgradeMenu/upgrade_window.png" id="2_cw7yn"]
+[ext_resource type="Texture2D" uid="uid://d2jd3d4dkchd1" path="res://Menus/HUD/Skillicon12_17.png" id="3_froyp"]
+[ext_resource type="Texture2D" uid="uid://cghqeawf8f5ox" path="res://Menus/HUD/Skillicon12_23.png" id="4_xmygx"]
+[ext_resource type="Texture2D" uid="uid://bdkuuyuuwpu6x" path="res://Menus/HUD/HP Icon.png" id="5_o1r6k"]
+[ext_resource type="FontFile" uid="uid://1m8klwn1qujm" path="res://fonts/ConnectionII.otf" id="6_rxor1"]
+
+[node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("firstChoice", "secondChoice", "thirdChoice")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3c87u")
+firstChoice = NodePath("FirstChoice")
+secondChoice = NodePath("SecondChoice")
+thirdChoice = NodePath("ThirdChoice")
+
+[node name="UpgradeWindow" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_cw7yn")
+
+[node name="Skillicon1217" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-98.2, 1.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_froyp")
+
+[node name="Skillicon1223" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.8, 1.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_xmygx")
+
+[node name="HpIcon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(99, 2)
+texture = ExtResource("5_o1r6k")
+
+[node name="FirstChoice" type="Button" parent="."]
+layout_mode = 2
+offset_left = -143.0
+offset_top = -12.0
+offset_right = -54.0
+offset_bottom = 43.0
+size_flags_horizontal = 0
+text = "
+"
+
+[node name="SecondChoice" type="Button" parent="."]
+layout_mode = 2
+offset_left = -44.0
+offset_top = -13.0
+offset_right = 45.0
+offset_bottom = 42.0
+size_flags_horizontal = 0
+text = "
+"
+
+[node name="ThirdChoice" type="Button" parent="."]
+layout_mode = 2
+offset_left = 54.0
+offset_top = -13.0
+offset_right = 143.0
+offset_bottom = 42.0
+size_flags_horizontal = 0
+text = "
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -117.0
+offset_top = 18.0
+offset_right = -77.0
+offset_bottom = 58.0
+theme_override_fonts/normal_font = ExtResource("6_rxor1")
+text = "+10%"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = 20.0
+offset_right = 25.0
+offset_bottom = 60.0
+theme_override_fonts/normal_font = ExtResource("6_rxor1")
+text = "+10%"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 92.0
+offset_top = 21.0
+offset_right = 134.0
+offset_bottom = 61.0
+theme_override_fonts/normal_font = ExtResource("6_rxor1")
+text = "+1"
+fit_content = true
+autowrap_mode = 0

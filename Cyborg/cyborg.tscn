@@ -1,0 +1,304 @@
+[gd_scene load_steps=23 format=3 uid="uid://b3rp73uypc3qe"]
+
+[ext_resource type="Script" path="res://Cyborg/cyborg.gd" id="1_6tmw3"]
+[ext_resource type="Script" path="res://PlayerStats.gd" id="2_4qg5e"]
+[ext_resource type="Texture2D" uid="uid://jgviixks0e7" path="res://Cyborg/idle/Idle2_1.png" id="2_f0t2t"]
+[ext_resource type="Texture2D" uid="uid://6bj58uo62aw6" path="res://Cyborg/hurt/Cyborg_hurt_1.png" id="2_yg8nl"]
+[ext_resource type="Texture2D" uid="uid://glbi5cnpct5r" path="res://Cyborg/hurt/Cyborg_hurt_2.png" id="3_2v65u"]
+[ext_resource type="Texture2D" uid="uid://dgc5n4nacwy1f" path="res://Cyborg/idle/Idle2_2.png" id="3_27xl6"]
+[ext_resource type="Texture2D" uid="uid://c4a8cu2idluut" path="res://Cyborg/idle/Idle2_3.png" id="4_y61wb"]
+[ext_resource type="Texture2D" uid="uid://cod3snl6xesjc" path="res://Cyborg/idle/Idle2_4.png" id="5_q8dj5"]
+[ext_resource type="Texture2D" uid="uid://c7vq7h0a2o5oc" path="res://Cyborg/running/Run2_1.png" id="6_43qng"]
+[ext_resource type="Texture2D" uid="uid://lto0apqgj0p4" path="res://Cyborg/running/Run2_2.png" id="7_m1kvk"]
+[ext_resource type="Texture2D" uid="uid://d1uwp2edgutdh" path="res://Cyborg/running/Run2_3.png" id="8_1uafg"]
+[ext_resource type="Texture2D" uid="uid://cxforsh5fann1" path="res://Cyborg/running/Run2_4.png" id="9_0wkma"]
+[ext_resource type="Texture2D" uid="uid://befb67wxv1mw4" path="res://Cyborg/arms/1.png" id="9_7m7pt"]
+[ext_resource type="Texture2D" uid="uid://bkj5pvui1af80" path="res://Cyborg/arms/6_rotated.png" id="9_pn83a"]
+[ext_resource type="Texture2D" uid="uid://bcs8vmwowmc7y" path="res://Cyborg/running/Run2_5.png" id="10_3eia8"]
+[ext_resource type="Texture2D" uid="uid://bqrl7v566n0xv" path="res://Cyborg/running/Run2_6.png" id="11_k37ml"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifhqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yg8nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2v65u")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f0t2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_27xl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y61wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q8dj5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_43qng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m1kvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1uafg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0wkma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3eia8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k37ml")
+}],
+"loop": true,
+"name": &"running",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2j60"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_xwmba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite/Arms/LeftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite/Arms/RightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"running"]
+}
+
+[sub_resource type="Animation" id="Animation_dmpb0"]
+resource_name = "idle"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite/Arms/LeftArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [Vector2(-7, -2), Vector2(-7, -3), Vector2(-7, -3), Vector2(-7, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite/Arms/RightArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [Vector2(-7, -2), Vector2(-7, -3), Vector2(-7, -3), Vector2(-7, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_62ouv"]
+resource_name = "running"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.000150286, 0.000212537, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite/Arms/LeftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(7.01108e-05, 1e-05, 1e-05, 1e-05, 1.87858e-05, 0.000300573),
+"update": 1,
+"values": [Vector2(-2, 0), Vector2(-5, 2.08165e-12), Vector2(-3, -1), Vector2(-4, -1), Vector2(-5, 2.08165e-12), Vector2(-1, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite/Arms/RightArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1e-05, 2.3128e-05, 1.63539e-05, 2.4788e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-3, 0), Vector2(-3, -1), Vector2(-4, -1), Vector2(-5, 0), Vector2(-1, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"running", &"running", &"running", &"running", &"running", &"running"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l5dh3"]
+_data = {
+"RESET": SubResource("Animation_xwmba"),
+"idle": SubResource("Animation_dmpb0"),
+"running": SubResource("Animation_62ouv")
+}
+
+[node name="Cyborg" type="CharacterBody2D" node_paths=PackedStringArray("animationPlayer", "playerStats", "animatedSprite", "leftArmSprite", "rightArmSprite", "leftGunPosition", "rightGunPosition", "visionMarker")]
+script = ExtResource("1_6tmw3")
+animationPlayer = NodePath("AnimationPlayer")
+playerStats = NodePath("PlayerStats")
+animatedSprite = NodePath("AnimatedSprite")
+leftArmSprite = NodePath("AnimatedSprite/Arms/LeftArm/LeftArmSprite")
+rightArmSprite = NodePath("AnimatedSprite/Arms/RightArm/RightArmSprite")
+leftGunPosition = NodePath("AnimatedSprite/Arms/LeftArm/LeftArmSprite/LeftGun")
+rightGunPosition = NodePath("AnimatedSprite/Arms/RightArm/RightArmSprite/RightGun")
+visionMarker = NodePath("VisionMarker")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ifhqt")
+animation = &"running"
+frame = 1
+
+[node name="Arms" type="Node2D" parent="AnimatedSprite"]
+position = Vector2(7, 2)
+
+[node name="RightArm" type="Node2D" parent="AnimatedSprite/Arms"]
+
+[node name="RightArmSprite" type="Sprite2D" parent="AnimatedSprite/Arms/RightArm"]
+z_index = 10
+texture_filter = 1
+position = Vector2(-6, -5)
+rotation = 0.568029
+texture = ExtResource("9_pn83a")
+offset = Vector2(5.76055, -2.01873)
+
+[node name="RightGun" type="Marker2D" parent="AnimatedSprite/Arms/RightArm/RightArmSprite"]
+z_index = 10
+position = Vector2(10.424, -4.0422)
+
+[node name="LeftArm" type="Node2D" parent="AnimatedSprite/Arms"]
+
+[node name="LeftArmSprite" type="Sprite2D" parent="AnimatedSprite/Arms/LeftArm"]
+z_index = -10
+texture_filter = 1
+position = Vector2(0.778079, -5.56792)
+texture = ExtResource("9_7m7pt")
+offset = Vector2(6.78572, -0.916569)
+
+[node name="LeftGun" type="Marker2D" parent="AnimatedSprite/Arms/LeftArm/LeftArmSprite"]
+z_index = 1
+position = Vector2(10, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a2j60")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="PlayerStats" type="Node2D" parent="."]
+script = ExtResource("2_4qg5e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l5dh3")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VisionMarker" type="Marker2D" parent="."]
+position = Vector2(0, -10)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqfbyy2uryiek"]
+
+[ext_resource type="PackedScene" uid="uid://nwix7deitq2v" path="res://Components/hitbox_component.tscn" id="1_56xmu"]
+[ext_resource type="PackedScene" uid="uid://c6xdd60id7lwj" path="res://Components/health_component.tscn" id="2_lyv66"]
+[ext_resource type="PackedScene" uid="uid://dmlkuyssk1c6b" path="res://Components/attack_component.tscn" id="3_8sasa"]
+[ext_resource type="Script" path="res://Components/attack_component_script.gd" id="4_rfchy"]
+
+[node name="EnemyComponent" type="Node2D"]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_56xmu")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_lyv66")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("3_8sasa")]
+script = ExtResource("4_rfchy")

@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@onready var animationPlayer = get_node("AnimationPlayer")
-@onready var cameraNode = owner.get_node("PlayerCamera")
-@onready var gunPositions = [get_node("GunPosition_0"), get_node("GunPosition_1")]
+@onready var animationPlayer = get_node("Sprite2D/AnimatedSprite2D")
+@onready var gunPositions = [get_node("GunPosition_0"), get_node("GunPosition_1"), get_node("GunPosition_2"), get_node("GunPosition_3")]
 var playerGuns = []
 var isLookingRight = true
 var playerLife = 10
@@ -11,12 +10,10 @@ const SPEED = 100
 const ACCELERATION = 500
 const FRICTION = 800
 
+signal player_take_damage(cur_life, max_life)
+
 func _ready():
 	createGuns()
-
-func _process(delta):
-	#playerGun.lookAt(get_global_mouse_position())
-	updateCamera()
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -29,39 +26,36 @@ func _physics_process(delta):
 	
 	handleAnimation()
 	move_and_collide(velocity * delta)
+	update_gun_position()
 
 func createGuns():
 	for n in range(gunPositions.size()):
 		var playerGunRaw = load("res://Guns/Gun_1/gun_1.tscn")
 		playerGuns.append(playerGunRaw.instantiate())
-		playerGuns[n].position = gunPositions[n].position
 		gunPositions[n].add_child(playerGuns[n])
-		playerGuns[n].set_owner_node(self)
+		playerGuns[n].owner = owner
 
 
 func handleAnimation():
+	if "hurt" in animationPlayer.animation && animationPlayer.is_playing():
+		return
+	
 	if velocity.x > 0:
-		isLookingRight = true
+		animationPlayer.flip_h = false
 	elif velocity.x < 0:
-		isLookingRight = false
+		animationPlayer.flip_h = true
 	
 	if velocity != Vector2.ZERO:
-		if isLookingRight:
-			animationPlayer.play("running_right")
-		else:
-			animationPlayer.play("running_left")
+		animationPlayer.play("running")
 	else:
-		if isLookingRight:
-			animationPlayer.play("idle_right")
-		else:
-			animationPlayer.play("idle_left")
-
-func updateCamera():
-	cameraNode.position = position
+		animationPlayer.play("idle")
+	
 
 func take_damage(dmg):
 	playerLife -= dmg
-	print(playerLife)
+	player_take_damage.emit(playerLife, 10)
+	animationPlayer.play("hurt")
+	
 	knockback()
 
 func knockback():
@@ -70,3 +64,11 @@ func knockback():
 		var direction = enemies[i].global_position - global_position
 		if direction.length() < 100:
 			enemies[i].knockback(direction, 100)
+
+func update_gun_position():
+	for i in range(gunPositions.size()):
+		var distance = gunPositions[i].position.length()
+		var newAngle = gunPositions[i].position.angle() + PI / 100
+		var unitVector = Vector2(cos(newAngle), sin(newAngle))
+		gunPositions[i].global_position = global_position + unitVector * distance
+		playerGuns[i].set_player_position(global_position)

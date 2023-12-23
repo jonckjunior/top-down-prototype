@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://0ath7vl5ks5"]
+
+[ext_resource type="Script" path="res://Enemies/K_1/k_1.gd" id="1_bwexx"]
+[ext_resource type="PackedScene" uid="uid://c6xdd60id7lwj" path="res://Components/health_component.tscn" id="2_vb6vp"]
+[ext_resource type="PackedScene" uid="uid://nwix7deitq2v" path="res://Components/hitbox_component.tscn" id="3_rp4ln"]
+[ext_resource type="Texture2D" uid="uid://b7sk124n403qt" path="res://Enemies/K_1/k_1.png" id="6_gj0s0"]
+[ext_resource type="Script" path="res://Components/attack_component_script.gd" id="6_hdgwq"]
+[ext_resource type="PackedScene" uid="uid://h5m5b2jk365v" path="res://Components/movement_component.tscn" id="6_y1bn3"]
+[ext_resource type="PackedScene" uid="uid://bjfadm778h0by" path="res://Components/animation_component.tscn" id="7_ipqp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68sa6"]
+size = Vector2(32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgd8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gj0s0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3peao"]
+size = Vector2(32, 32)
+
+[node name="K_1" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_bwexx")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_vb6vp")]
+MAX_HEALTH = 100.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent", "attackComponent") instance=ExtResource("3_rp4ln")]
+collision_layer = 4
+healthComponent = NodePath("../HealthComponent")
+attackComponent = NodePath("../AttackComponent")
+
+[node name="DamagePlayer" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_68sa6")
+
+[node name="MovementComponent" parent="." instance=ExtResource("6_y1bn3")]
+
+[node name="AnimationComponent" parent="." instance=ExtResource("7_ipqp2")]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tgd8f")
+
+[node name="DamageMe" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3peao")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("6_hdgwq")

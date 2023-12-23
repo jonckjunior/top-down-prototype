@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhaijus7j3of0"]
+[gd_scene load_steps=11 format=3 uid="uid://dhaijus7j3of0"]
 
 [ext_resource type="Script" path="res://Guns/Gun_1/gun_1.gd" id="1_ces16"]
 [ext_resource type="Texture2D" uid="uid://cu7gshw4xa4yl" path="res://Guns/Gun_1/Sprite/2_1.png" id="1_thgyt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqw5nxwpm3kpw" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_4.png" id="6_ibwsw"]
 [ext_resource type="Texture2D" uid="uid://blv6emrglt20u" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_5.png" id="7_ybsmd"]
 [ext_resource type="Texture2D" uid="uid://d2212u2lmlybj" path="res://Guns/Gun_1/Sprite/Bullet Effect/6_1_6.png" id="8_eh1f8"]
+[ext_resource type="AudioStream" uid="uid://eyikerrexrvv" path="res://Guns/Gun_1/Audio/Shooting/mixkit-game-gun-shot-1662.mp3" id="9_p8tyq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gei8e"]
 animations = [{
@@ -36,7 +37,6 @@ animations = [{
 }]
 
 [node name="Gun_1" type="Node2D"]
-position = Vector2(365, 99)
 script = ExtResource("1_ces16")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -56,3 +56,7 @@ sprite_frames = SubResource("SpriteFrames_gei8e")
 animation = &"bullet_effect"
 frame = 5
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_p8tyq")
+volume_db = -15.923

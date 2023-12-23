@@ -17,8 +17,11 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=800
+window/size/viewport_height=600
 window/size/mode=2
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://Mouse/target.png"
 
 [dotnet]
 
@@ -46,7 +49,16 @@ down={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(591, 17),"global_position":Vector2(599, 97),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
-[rendering]
+[layer_names]
 
-renderer/rendering_method="mobile"
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy_take_damage"
+2d_physics/layer_3="enemy_do_damage"
+2d_physics/layer_4="player_bullet"
+2d_physics/layer_5="enemy"

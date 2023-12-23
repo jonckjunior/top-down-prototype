@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcwteuuqqikx7"]
+
+[ext_resource type="Script" path="res://Cyborg/cyborg_death.gd" id="1_6ytls"]
+[ext_resource type="Texture2D" uid="uid://bm57eoeb8122i" path="res://Cyborg/death/Cyborg_death_1.png" id="2_w767g"]
+[ext_resource type="Texture2D" uid="uid://dkv3fc2axkn6x" path="res://Cyborg/death/Cyborg_death_2.png" id="3_p6t1v"]
+[ext_resource type="Texture2D" uid="uid://u67qxkd1fsm7" path="res://Cyborg/death/Cyborg_death_3.png" id="4_logy1"]
+[ext_resource type="Texture2D" uid="uid://ia0lf3bo1lec" path="res://Cyborg/death/Cyborg_death_4.png" id="5_7gopo"]
+[ext_resource type="Texture2D" uid="uid://b3pl2g3mqije4" path="res://Cyborg/death/Cyborg_death_5.png" id="6_ox00j"]
+[ext_resource type="Texture2D" uid="uid://dbgosllen2yvh" path="res://Cyborg/death/Cyborg_death_6.png" id="7_3bnod"]
+[ext_resource type="PackedScene" uid="uid://dmrtyeahdjsyx" path="res://particles/cyborg_death.tscn" id="8_u7uas"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cp6rd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w767g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p6t1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_logy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7gopo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ox00j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3bnod")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CyborgDeath" type="Node2D" node_paths=PackedStringArray("animatedSprite")]
+script = ExtResource("1_6ytls")
+animatedSprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_cp6rd")
+frame = 5
+frame_progress = 1.0
+
+[node name="CyborgDeath" parent="." instance=ExtResource("8_u7uas")]
+position = Vector2(0, 13)

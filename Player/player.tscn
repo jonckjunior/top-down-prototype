@@ -1,32 +1,104 @@
-[gd_scene load_steps=30 format=3 uid="uid://g0sk65meh0w"]
+[gd_scene load_steps=47 format=3 uid="uid://g0sk65meh0w"]
 
 [ext_resource type="Script" path="res://Player/Script/PlayerScript.gd" id="1_8c4rb"]
+[ext_resource type="Shader" path="res://Test/glow.gdshader" id="2_1igqp"]
 [ext_resource type="Texture2D" uid="uid://tm5lno1alij5" path="res://Player/Animations/Idle/Idle_Left/Idle1_left1.png" id="2_xunjj"]
+[ext_resource type="Texture2D" uid="uid://070k7ju7lww7" path="res://Player/Animations/Death/Punk_death_1.png" id="3_al45s"]
 [ext_resource type="Texture2D" uid="uid://dbj7rba4dqomg" path="res://Player/Animations/Idle/Idle_Left/Idle1_left2.png" id="3_y506c"]
 [ext_resource type="Texture2D" uid="uid://bvflobiykifsq" path="res://Player/Animations/Idle/Idle_Left/Idle1_left3.png" id="4_6xvf2"]
+[ext_resource type="Texture2D" uid="uid://cd5jpiqbhpqmn" path="res://Player/Animations/Death/Punk_death_2.png" id="4_37lxo"]
+[ext_resource type="Texture2D" uid="uid://c0jwnnljibnbs" path="res://Player/Animations/Death/Punk_death_3.png" id="5_2txgs"]
 [ext_resource type="Texture2D" uid="uid://dykibvx04fn06" path="res://Player/Animations/Idle/Idle_Left/Idle1_left4.png" id="5_loarl"]
+[ext_resource type="Texture2D" uid="uid://c7knj8g1ndb3t" path="res://Player/Animations/Death/Punk_death_4.png" id="6_c1xsg"]
 [ext_resource type="Texture2D" uid="uid://c0gjlxag7x4vp" path="res://Player/Animations/Idle/Idle_Right/Idle1_f1.png" id="6_jm2wo"]
 [ext_resource type="Texture2D" uid="uid://11h0va405akh" path="res://Player/Animations/Idle/Idle_Right/Idle1_f2.png" id="7_dctsh"]
+[ext_resource type="Texture2D" uid="uid://b1000ohni1xe2" path="res://Player/Animations/Death/Punk_death_5.png" id="7_kdgl3"]
+[ext_resource type="Texture2D" uid="uid://b2p4nwa6heerd" path="res://Player/Animations/Death/Punk_death_6.png" id="8_4k2xf"]
 [ext_resource type="Texture2D" uid="uid://bfve2ypyq27kl" path="res://Player/Animations/Idle/Idle_Right/Idle1_f3.png" id="8_b7coe"]
+[ext_resource type="Texture2D" uid="uid://ckt7xmosnlcwy" path="res://Player/Animations/Hurt/Punk_hurt_1.png" id="9_ur0q1"]
 [ext_resource type="Texture2D" uid="uid://b73g4srhrtwq4" path="res://Player/Animations/Idle/Idle_Right/Idle1_f4.png" id="9_wtcd5"]
+[ext_resource type="Texture2D" uid="uid://dnde8hb18x30e" path="res://Player/Animations/Hurt/Punk_hurt_2.png" id="10_11h48"]
 [ext_resource type="Texture2D" uid="uid://bq0m4bicu2o10" path="res://Player/Animations/Running/Running_Left/Run1_left1.png" id="10_rp5nu"]
 [ext_resource type="Texture2D" uid="uid://cmt7bqpsf2wxm" path="res://Player/Animations/Running/Running_Left/Run1_left2.png" id="11_lptl6"]
+[ext_resource type="Texture2D" uid="uid://d38my3bkk1b2o" path="res://Player/Animations/Running/Punk_run_right_1.png" id="11_q47p5"]
 [ext_resource type="Texture2D" uid="uid://dtgqwkmhhxm0j" path="res://Player/Animations/Running/Running_Left/Run1_left3.png" id="12_e1rk7"]
+[ext_resource type="Texture2D" uid="uid://dwilqmbvacswm" path="res://Player/Animations/Running/Punk_run_right_2.png" id="12_twakl"]
 [ext_resource type="Texture2D" uid="uid://dvn24oii6c2jf" path="res://Player/Animations/Running/Running_Left/Run1_left4.png" id="13_jofr6"]
+[ext_resource type="Texture2D" uid="uid://dqnk2admm4wey" path="res://Player/Animations/Running/Punk_run_right_3.png" id="13_p6k7c"]
+[ext_resource type="Texture2D" uid="uid://ewluhpfrtcub" path="res://Player/Animations/Running/Punk_run_right_4.png" id="14_gx6r1"]
 [ext_resource type="Texture2D" uid="uid://bwv8iwwbs5jq7" path="res://Player/Animations/Running/Running_Left/Run1_left5.png" id="14_ieo6d"]
 [ext_resource type="Texture2D" uid="uid://brg3o2cw1qcys" path="res://Player/Animations/Running/Running_Left/Run1_left6.png" id="15_0ed8f"]
+[ext_resource type="Texture2D" uid="uid://obmldvdt6jja" path="res://Player/Animations/Running/Punk_run_right_5.png" id="15_yercu"]
 [ext_resource type="Texture2D" uid="uid://dedf4huqnj2w6" path="res://Player/Animations/Running/Running_Right/Run1_f1.png" id="16_mio2m"]
+[ext_resource type="Texture2D" uid="uid://rygguhva0ydp" path="res://Player/Animations/Running/Punk_run_right_6.png" id="16_t3mb7"]
 [ext_resource type="Texture2D" uid="uid://bmrer47jgwxra" path="res://Player/Animations/Running/Running_Right/Run1_f2.png" id="17_skn3v"]
 [ext_resource type="Texture2D" uid="uid://mhnlib75o1n1" path="res://Player/Animations/Running/Running_Right/Run1_f3.png" id="18_th54v"]
 [ext_resource type="Texture2D" uid="uid://c1tmln0u0e3du" path="res://Player/Animations/Running/Running_Right/Run1_f4.png" id="19_miyoe"]
 [ext_resource type="Texture2D" uid="uid://5sssirppu2ef" path="res://Player/Animations/Running/Running_Right/Run1_f5.png" id="20_k32up"]
 [ext_resource type="Texture2D" uid="uid://dort5e2spnjmt" path="res://Player/Animations/Running/Running_Right/Run1_f6.png" id="21_dv235"]
+[ext_resource type="Script" path="res://Components/health_component_script.gd" id="22_2iwq4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1gkf8"]
+shader = ExtResource("2_1igqp")
+shader_parameter/radius = 5.0
+shader_parameter/amount = 25.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gadsb"]
 size = Vector2(17, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mqehy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_al45s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_37lxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2txgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c1xsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kdgl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4k2xf")
+}],
+"loop": false,
+"name": &"death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ur0q1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_11h48")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jm2wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dctsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b7coe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wtcd5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_xunjj")
@@ -60,6 +132,29 @@ animations = [{
 "loop": true,
 "name": &"idle_right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_q47p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_twakl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_p6k7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gx6r1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yercu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_t3mb7")
+}],
+"loop": true,
+"name": &"running",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -261,11 +356,12 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+material = SubResource("ShaderMaterial_1gkf8")
 position = Vector2(304, 52)
+collision_mask = 4
 script = ExtResource("1_8c4rb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_gadsb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -281,16 +377,19 @@ libraries = {
 }
 
 [node name="GunPosition_0" type="Marker2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(2.08165e-12, -30)
 
 [node name="GunPosition_1" type="Marker2D" parent="."]
-position = Vector2(20, 0)
+position = Vector2(30, 2.08165e-12)
 
 [node name="GunPosition_2" type="Marker2D" parent="."]
-position = Vector2(0, 20)
+position = Vector2(2.08165e-12, 30)
 
 [node name="GunPosition_3" type="Marker2D" parent="."]
-position = Vector2(-20, 0)
+position = Vector2(-30, 2.08165e-12)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("22_2iwq4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://rc1oiu7roo8g"]
+[gd_scene load_steps=33 format=3 uid="uid://rc1oiu7roo8g"]
 
 [ext_resource type="Script" path="res://Enemies/Demon/demon.gd" id="1_dgrpb"]
 [ext_resource type="Texture2D" uid="uid://o3yod7krno15" path="res://Enemies/Demon/Sprite/running_right/big_demon_run_anim_f0.png" id="1_kdhp0"]
@@ -34,6 +34,8 @@ size = Vector2(22, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tawv"]
 size = Vector2(21.5, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvlm0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ody7w"]
 animations = [{
@@ -172,10 +174,12 @@ animations = [{
 
 [node name="Demon" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
-collision_mask = 0
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_dgrpb")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, 2)
@@ -189,8 +193,9 @@ shape = SubResource("RectangleShape2D_7tawv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_tvlm0")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ody7w")
-animation = &"kobold_die_top_left"
+animation = &"kobold_damage_down_left"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

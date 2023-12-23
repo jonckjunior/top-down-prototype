@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmrtyeahdjsyx"]
+
+[ext_resource type="PackedScene" uid="uid://ccojomhpgl5uj" path="res://particles/player_damage.tscn" id="1_qnffk"]
+
+[node name="CyborgDeath" type="Node2D"]
+
+[node name="CyborgDeath" parent="." instance=ExtResource("1_qnffk")]
+amount = 2000
+lifetime = 5.0
+explosiveness = 0.5
+trail_lifetime = 0.3

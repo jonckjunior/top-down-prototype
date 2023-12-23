@@ -19,4 +19,4 @@ Camera Mechanics: The camera follows the player, ensuring smooth gameplay.
 Time Dynamics: Time slows down during upgrades for strategic decision-making.
 
 ## Installation
-You can clone this repo, and run on godot. Or use the executable `prototype.exe`
+You can clone this repo, and run on godot.

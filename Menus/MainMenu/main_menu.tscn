@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl8mrypi5y4n0"]
+
+[ext_resource type="Script" path="res://Menus/MainMenu/main_menu.gd" id="1_6lhrs"]
+[ext_resource type="Shader" path="res://Menus/MainMenu/main_menu.gdshader" id="2_8qmsf"]
+[ext_resource type="Texture2D" uid="uid://dj38evmqvyiir" path="res://icon.svg" id="3_htanu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xprcy"]
+seed = 3
+fractal_type = 3
+domain_warp_enabled = true
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3pl60"]
+seamless = true
+noise = SubResource("FastNoiseLite_xprcy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yd14u"]
+shader = ExtResource("2_8qmsf")
+shader_parameter/scroll = Vector2(0.05, 0.05)
+shader_parameter/noise = SubResource("NoiseTexture2D_3pl60")
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6lhrs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -142.0
+offset_right = 188.0
+offset_bottom = -41.0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yd14u")
+position = Vector2(597.5, 332)
+scale = Vector2(10.0391, 6.125)
+texture = ExtResource("3_htanu")

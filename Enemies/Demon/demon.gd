@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animationPlayer = get_node("Sprite2D/AnimatedSprite2D")
 @onready var deathObjectRaw = load("res://Enemies/Demon/death_object.tscn")
-@export var life = 20
+@export var life = 10
 
 var baseKnockback = 0.3
 var currentKnockback = 0.0
@@ -76,7 +76,6 @@ func knockback(knockbackDirection, knockbackSpeed):
 
 func die():
 	var deathObject = deathObjectRaw.instantiate()
-	remove_child(deathObject)
 	owner.add_child(deathObject)
 	
 	deathObject.global_position = global_position
@@ -110,9 +109,6 @@ func getNormalizedSpeed():
 	else:
 		return speedKnockback
 
-func canWalk():
-	return currentKnockback <= 0
-
 func updateVelocity(delta):
 	updateKnockback(delta)
 	
@@ -121,11 +117,6 @@ func updateVelocity(delta):
 	var normalized_speed = getNormalizedSpeed()
 	
 	velocity = velocity.move_toward(normalized_direction * normalized_speed, normalized_delta)
-	#if normalized_direction != Vector2.ZERO:
-		#velocity = velocity.move_toward(normalized_direction * SPEED, ACCELERATION * delta)
-	#else:
-		#velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
 	move_and_collide(velocity * delta)
 
 func updateKnockback(delta):
@@ -136,6 +127,5 @@ func updateKnockback(delta):
 
 
 func _on_area_2d_body_entered(body):
-	print(body)
 	if body.is_in_group("player"):
 		body.take_damage(damage)

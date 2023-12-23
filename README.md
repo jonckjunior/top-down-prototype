@@ -10,3 +10,5 @@ Here are some of the features I added:
   - Numbers are shown the enemy takes damage
   - Camera follows the player
   - Time is slown down for upgrades
+
+![](https://github.com/jonckjunior/godot-project/blob/main/ExampleProjectLower.mp4)

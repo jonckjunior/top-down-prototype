@@ -11,4 +11,4 @@ Here are some of the features I added:
   - Camera follows the player
   - Time is slown down for upgrades
 
-![](https://github.com/jonckjunior/godot-project/blob/main/ExampleProjectLower.gif)
+![](https://github.com/jonckjunior/godot-project/blob/main/ExampleProject.gif)
